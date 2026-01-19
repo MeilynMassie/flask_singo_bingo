@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/bingoCard.css">
+    <link rel="stylesheet" href="static/css/floatingNotes.css">
     <title>Bingo Card</title>
   </head>
   <body>
     <h1>Bingo Card</h1>
+    <!-- Createst the floating notes in the background  -->
+    <div id="floating-notes-container"></div>
+
+    <!-- Creates bingo card -->
     <div id="bingo-card">
       <div id="bingo-header-row"></div>
       <div id="bingo-grid"></div>
     </div>
     
     <script src="{{ url_for('static', filename='js/bingoCard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/floatingNotes.js') }}"></script>
 
   </body>
 </html>

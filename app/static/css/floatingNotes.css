@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff6b6b, #f5cb20);
+    background-size: 400% 400%;
+    animation: gradient 25s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.floating-note {
+    position: absolute;
+    width: 50px; 
+    height: 50px;
+    background-size: contain;
+    opacity: 0.2;
+    animation: float 15s ease-in-out infinite;
+}
+
+.floating-treble {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+    mix-blend-mode: multiply;
+}
+
+.floating-bass {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    animation: float 18s ease-in-out infinite;
+    mix-blend-mode: multiply;
+}
+
+.floating-note:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.floating-note:nth-child(2) {
+    left: 30%;
+    top: 50%;
+    animation-delay: -5s;
+}
+
+.floating-note:nth-child(3) {
+    left: 50%;
+    top: 30%;
+    animation-delay: -10s;
+}
+
+.floating-note:nth-child(4) {
+    left: 70%;
+    top: 40%;
+    animation-delay: -15s;
+}
+
+.floating-note:nth-child(5) {
+    left: 90%;
+    top: 60%;
+    animation-delay: -20s;
+}
+
+.floating-treble:nth-child(6) {
+    left: 20%;
+    top: 70%;
+    animation-delay: -7s;
+}
+
+.floating-treble:nth-child(7) {
+    left: 60%;
+    top: 10%;
+    animation-delay: -12s;
+}
+
+.floating-treble:nth-child(8) {
+    left: 80%;
+    top: 80%;
+    animation-delay: -17s;
+}
+
+.floating-bass:nth-child(9) {
+    left: 40%;
+    top: 20%;
+    animation-delay: -8s;
+}
+
+.floating-bass:nth-child(10) {
+    left: 70%;
+    top: 60%;
+    animation-delay: -14s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-100px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

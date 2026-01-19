@@ -21,6 +21,7 @@ fetch('/api/playlists')
         playlist.forEach(song => {
             const tile = document.createElement('div');
             tile.className = 'song-tile';
+            tile.id = song;
             tile.textContent = song; // adjust fields as necessary
             card.appendChild(tile);
         });
