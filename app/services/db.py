@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 # Connection Query
 def db_get_connection():
+    print("Establishing DB connection...")
     load_dotenv()
     conn = psycopg2.connect(
         host=os.getenv('DB_HOST'),
@@ -17,6 +18,7 @@ def db_get_connection():
     
 # Playlists Queries
 def db_get_playlists():
+    print("Fetching all playlists from DB...")
     cur = db_get_connection()
     cur.execute("""
     SELECT * FROM playlists;
@@ -24,6 +26,7 @@ def db_get_playlists():
     return cur.fetchall()
 
 def db_get_playlist_by_id(playlist_id):
+    print("Fetching playlist by ID from DB...")
     cur = db_get_connection()
     cur.execute("""
     SELECT * FROM playlists WHERE id = %s;
@@ -31,6 +34,7 @@ def db_get_playlist_by_id(playlist_id):
     return cur.fetchone()
 
 def db_get_playlist_details(column_name):
+    print("Fetching playlist details from DB...")
     cur = db_get_connection()
     query = f"SELECT {column_name} FROM playlists;"
     cur.execute(query)
@@ -38,6 +42,7 @@ def db_get_playlist_details(column_name):
 
 # Users Queries
 def db_add_user(user_id, lobby_code):
+    print("Adding user to DB...")
     cur = db_get_connection()
     cur.execute("""
     INSERT INTO users (id, lobby_code) VALUES (%s, %s);
@@ -45,6 +50,7 @@ def db_add_user(user_id, lobby_code):
     cur.connection.commit()
 
 # def db_get_users_by_lobby_code(lobby_code):
+#     print("Fetching users by lobby code from DB...")
 #     cur = db_get_connection()
 #     cur.execute("""
 #     SELECT * FROM users WHERE id = %s;
