@@ -18,9 +18,9 @@ def spotify_get_playlists():
 
     # Initialize Spotify client
     sp = Spotify(auth_manager=SpotifyOAuth(
-        client_id=os.getenv('SPOTIPY_CLIENT_ID'),
-        client_secret=os.getenv('SPOTIPY_CLIENT_SECRET'),
-        redirect_uri=os.getenv('SPOTIPY_REDIRECT_URI'),
+        client_id=os.getenv('SPOTIFY_CLIENT_ID'),
+        client_secret=os.getenv('SPOTIFY_CLIENT_SECRET'),
+        redirect_uri=os.getenv('SPOTIFY_REDIRECT_URI'),
         scope="playlist-read-private"
     ))
     print("Spotify client initialized.")
