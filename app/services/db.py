@@ -52,31 +52,33 @@ def db_get_playlist_details(column_name):
 # Users Queries
 def db_add_user(username, lobby_code):
     print("Adding user to DB...")
-    cur = db_get_connection()
-    cur.execute("""
-    INSERT INTO users (username, lobby_code) VALUES (%s, %s);
-    """, (username, lobby_code))
-    cur.connection.commit()
-    cur.close()
-    cur.connection.close() 
+    print(f"Username: {username}, Lobby Code: {lobby_code}")
+    # cur = db_get_connection()
+    # cur.execute("""
+    # INSERT INTO users (username, lobby_code) VALUES (%s, %s);
+    # """, (username, lobby_code))
+    # cur.connection.commit()
+    # cur.close()
+    # cur.connection.close() 
 
 # User annd Avatar Update
 def db_add_user_avatar(username, avatar_id):
-    cur = db_get_connection()
+    # cur = db_get_connection()
     print("Updating avatar taken status in DB...")
-    cur.execute("""
-    UPDATE avatars SET taken = 1 WHERE id = %s;
-    """, (avatar_id))
-    cur.connection.commit()
+    print(f"Avatar ID: {avatar_id}")
+    # cur.execute("""
+    # UPDATE avatars SET taken = 1 WHERE id = %s;
+    # """, (avatar_id))
+    # cur.connection.commit()
 
     print("Adding user with avatar to DB...")
-    cur.execute("""
-    UPDATE avatars SET avatar_id=%s
-        WHERE LOWER(username) = LOWER(%s);
-    """, (avatar_id, username))
-    cur.connection.commit()
-    cur.close()
-    cur.connection.close()
+    # cur.execute("""
+    # UPDATE avatars SET avatar_id=%s
+    #     WHERE LOWER(username) = LOWER(%s);
+    # """, (avatar_id, username))
+    # cur.connection.commit()
+    # cur.close()
+    # cur.connection.close()
 
 # Avatars Queries
 def db_get_avatars():
