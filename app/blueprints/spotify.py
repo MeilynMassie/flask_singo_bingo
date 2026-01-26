@@ -61,7 +61,7 @@ def generate_bingo_card():
     print("Rendering bingo card...")
     return render_template('bingo_card.html')
 
-# Play song from playlist
+# TODO NEXT: Play song from playlist
 @spotify_bp.route('/playsong')
 def play_song():
     print("Playing song...")
