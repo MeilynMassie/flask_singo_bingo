@@ -9,4 +9,5 @@ A game inspired by Jackbox TV and Bingo. Each player will connect to a host devi
 This game is currently only single player. Multiplayer will be implemented later. There are many bugs to find and squash.
 
 ## STEPS TO START GAME: 
-1. TBD 
+1. TBD
+2. With the new setup, it can't be run without a .env file
