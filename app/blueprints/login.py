@@ -17,19 +17,19 @@ def generateLobbyCode():
     return lobby_code
 
 # Adds user in db
-@login_bp.route('/db/create-user', methods=['POST'])
+@login_bp.route('/db/createUser', methods=['POST'])
 def create_user():
     data = request.get_json()
     username = data.get("username")
-    lobbyCode = data.get("lobby_code")
-    print(f"Creating user: {username}, Lobby Code: {lobbyCode}")
-    if not username or not lobbyCode:
+    lobby_code = data.get("lobby_code")
+    print(f"Creating user: {username}, Lobby Code: {lobby_code}")
+    if not username or not lobby_code:
         return jsonify({"ok": False, "error": "Missing something"}), 400
-    db_add_user(username, lobbyCode)
+    db_add_user(username, lobby_code)
     return jsonify({"ok": True})
 
 # Adds selected avatar to user in db
-@login_bp.route('/db/add-avatar-selected', methods=['POST'])
+@login_bp.route('/db/addAvatarSelected', methods=['POST'])
 def add_avatar_selected():
     data = request.get_json()
     username = data.get("username")

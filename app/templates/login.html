@@ -7,17 +7,17 @@
         <link rel="stylesheet" href="static/css/login.css">
     </head>
     <body>
-        <input type="hidden" id="lobby_code" value="{{ lobby_code }}">
+        <input type="hidden" id="lobby-code" value="{{ lobbyCode }}">
         <!-- Login form to add user to db and verify lobby code -->
-        <div id="joinLobbyContainer">
+        <div id="join-lobby-container">
             <h1>Join Lobby</h1>
             {% if error %}
                 <p style="color:red">{{ error }}</p>
             {% endif %}
             <!-- TODO: Delete lobbycode later (provided by computer) -->
-            <h1>LOBBY CODE: {{lobby_code}} </h1>
-            <div id="loginFormContainer">
-                <form id="loginForm" method="POST">
+            <h1>LOBBY CODE: {{ lobbyCode }} </h1>
+            <div id="login-form-container">
+                <form id="login-form" method="POST">
                     <input 
                         name="username" 
                         id="username" 
@@ -26,21 +26,21 @@
                         />
                     <br/>
                     <input 
-                        name="lobby_code_input" 
-                        id="lobby_code_input" 
+                        name="lobby-code-input" 
+                        id="lobby-code-input" 
                         placeholder="Lobby Code..." 
                         maxlength="5"
                         />
                     <br/>
-                    <button type="submit" id="submit_login">Join Lobby</button>
+                    <button type="submit" id="submit-login">Join Lobby</button>
                 </form>
             </div>
         </div>
         <!-- Displays avatars not taken -->
-        <div id="avatarSelectionContainer" hidden>
+        <div id="avatar-selection-container" hidden>
             <h1>Select Your Avatar</h1>
             <h3>Choose Wisely</h3>
-            <div id="avatarSelection"></div>
+            <div id="avatar-selection"></div>
         </div>
         
         <script src="{{ url_for('static', filename='js/login.js') }}"></script>

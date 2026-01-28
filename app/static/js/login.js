@@ -1,10 +1,10 @@
 // Verify lobby code 
-document.getElementById("loginForm").addEventListener("submit", function (e) {
+document.getElementById("login-form").addEventListener("submit", function (e) {
     e.preventDefault(); // stop default submission
-    const submitLogin = document.getElementById("submit_login");
-    const lobbyCodeInput = document.getElementById('lobby_code_input').value;
+    const submitLogin = document.getElementById("submit-login");
+    const lobbyCodeInput = document.getElementById('lobby-code-input').value;
     const username = document.getElementById('username').value;
-    const lobbyCode = document.getElementById('lobby_code').value;
+    const lobbyCode = document.getElementById('lobby-code').value;
     console.log(`Lobby Code Input: ${lobbyCodeInput}, Expected Lobby Code: ${lobbyCode}`);
     console.log(`Username: ${username}`);
     if (lobbyCode.toLowerCase() === lobbyCodeInput.toLowerCase()) {
@@ -18,7 +18,7 @@ function addAvatarToUser(avatarId) {
     const username = document.getElementById("username").value;
     console.log(`Selected Avatar ID: ${avatarId} for user: ${username}`);
 
-    fetch("/db/add-avatar-selected", {
+    fetch("/db/addAvatarSelected", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -30,8 +30,8 @@ function addAvatarToUser(avatarId) {
         .then(data => {
             if (data.ok) {
                 console.log("Avatar saved!");
-                console.log("Redirecting to /bingocard");
-                window.location.href = "/bingocard";
+                console.log("Redirecting to /bingoCard");
+                window.location.href = "/bingoCard";
             } else {
                 console.error("Error:", data.error);
             }
@@ -41,7 +41,7 @@ function addAvatarToUser(avatarId) {
 function addUser(username, lobbyCode) {
     console.log(`Username: ${username}, Lobby Code: ${lobbyCode}`);
 
-    fetch("/db/create-user", {
+    fetch("/db/createUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -60,9 +60,9 @@ function addUser(username, lobbyCode) {
 }
 
 function showAvatarSelection() {
-    document.getElementById('joinLobbyContainer').hidden = true;
-    document.getElementById('avatarSelectionContainer').hidden = false;
-    const avatarDiv = document.getElementById('avatarSelection')
+    document.getElementById('join-lobby-container').hidden = true;
+    document.getElementById('avatar-selection-container').hidden = false;
+    const avatarDiv = document.getElementById('avatar-selection')
     // Fetches avatar images from server
     fetch('/db/GetAvatarImages')
         .then(response => response.json())
@@ -73,7 +73,7 @@ function showAvatarSelection() {
                 console.log(`URL: ${avatar.filePath}`);
                 imgElement.src = avatar.filePath;
                 imgElement.id = avatar.id;
-                imgElement.className = 'avatarImage';
+                imgElement.className = 'avatar-image';
                 imgElement.onclick = function () { addAvatarToUser(avatar.id); };
                 avatarDiv.appendChild(imgElement);
             });

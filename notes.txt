@@ -1,7 +1,17 @@
 NAMING CONVENTIONS 
-HTML Tags: all lowercase with hyphens between words (ex: singo-bingo)
-All Other Files: Lower Camel Case (ex: singoBingo)
-JSON Tag Names: all lowercase with underscores between words (ex: signo_bingo)
+HTML Tags: 
+All CSS:
+  all lowercase with hyphens between words (ex: singo-bingo)
+JSON Tag Names: 
+IMG File Names:
+DB Functions: 
+Routes Related Functions:
+  all lowercase with underscores between words (ex: singo_bingo)
+File Names:
+Routes:
+All Helper Functions:
+All Other Functiions:
+  Lower Camel Case (ex: singoBingo)
 
 PSYCOPG2 NUANCES
 - Single params in DB have to have trailing comma. Python will interpert as an int 

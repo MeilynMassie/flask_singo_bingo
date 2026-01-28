@@ -13,22 +13,21 @@ def test_page():
 # Starting point for the computer
 @main.route('/welcome')
 def welcome():
-    return render_template('welcome.html', lobby_code=lobbyCode)
+    return render_template('welcome.html', lobbyCode=lobbyCode)
 
 # Starting point for players on phones
-# @main.route('/')
+@main.route('/')
 @main.route('/login')
 def login():
-    return render_template('login.html', lobby_code=lobbyCode)
+    return render_template('login.html', lobbyCode=lobbyCode)
 
 # Render bingo card
-@main.route('/bingocard')
+@main.route('/bingoCard')
 def generate_bingo_card():
     print("Rendering bingo card...")
     return render_template('bingoCard.html')
 
 # Starts playing music
-@main.route('/')
 @main.route("/startGame")
-def startGame():
+def start_game():
     return render_template("startGame.html")
