@@ -4,14 +4,13 @@ function songTileClicked(event) {
 }
 
 // Fetch Playlist JSON and build bingo card
-fetch('/spotify/playlists')
+fetch('/spotify/playlists/selectedPlaylist')
     .then(response => response.json())
     .then(playlist => {
         console.log(playlist);
         // Create a 6x5 bingo card
-        const bingoCard = document.getElementById('bingo-card');
-        const headerRow = document.getElementById('bingo-header-row');
         // Create header
+        const headerRow = document.getElementById('bingo-header-row');
         const title = ['B', 'I', 'N', 'G', 'O'];
         title.forEach(letter => {
             const headerCell = document.createElement('div');

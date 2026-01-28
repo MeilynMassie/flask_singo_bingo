@@ -1,3 +1,8 @@
+NAMING CONVENTIONS 
+HTML Tags: all lowercase with hyphens between words (ex: singo-bingo)
+All Other Files: Lower Camel Case (ex: singoBingo)
+JSON Tag Names: all lowercase with underscores between words (ex: signo_bingo)
+
 PSYCOPG2 NUANCES
 - Single params in DB have to have trailing comma. Python will interpert as an int 
   instead of tuple which is needed to run in db 

@@ -8,7 +8,7 @@ lobbyCode = generateLobbyCode()
 # Testing page
 @main.route('/testPage')
 def test_page():
-    return render_template('test_page.html')
+    return render_template('testPage.html')
 
 # Starting point for the computer
 @main.route('/welcome')
@@ -25,10 +25,10 @@ def login():
 @main.route('/bingocard')
 def generate_bingo_card():
     print("Rendering bingo card...")
-    return render_template('bingo_card.html')
+    return render_template('bingoCard.html')
 
 # Starts playing music
 @main.route('/')
 @main.route("/startGame")
-def start_game():
-    return render_template("start_game.html")
+def startGame():
+    return render_template("startGame.html")
