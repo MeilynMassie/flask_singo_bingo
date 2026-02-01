@@ -72,6 +72,16 @@ def db_get_lobby(lobbyCode):
     cur.connection.close()
     return results
 
+def db_get_all_active_lobbies():
+    cur = db_get_connection()
+    cur.execute("""
+    select lobby_code from lobbies where status != 'dead';
+    """)
+    results = cur.fetchall()
+    cur.close()
+    cur.connection.close()
+    return results
+
 def db_create_lobby(lobbyCode, playerMode, playlistMode):
     playerMode = 1 if playerMode == "singleplayer" else 8
     print("Adding lobby code to db...")

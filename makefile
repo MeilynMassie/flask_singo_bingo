@@ -2,7 +2,7 @@
 PYTHON := .venv/bin/python
 FLASK  := .venv/bin/flask
 PIP := .venv/bin/pip
-APP_URL := http://127.0.0.1:5000/mainMenu
+APP_URL := http://127.0.0.1:5000/login
 
 # Initial setup
 setup:

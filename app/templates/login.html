@@ -7,42 +7,34 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
     </head>
     <body>
-        <input type="hidden" id="lobby-code" value="{{ lobbyCode }}">
-        
-        <div id="join-lobby-container">
-            <h1>Join Lobby</h1>
-            {% if error %}
-                <p style="color:red">{{ error }}</p>
-            {% endif %}
-            <!-- TODO: Delete lobbycode later (provided by computer) -->
-            <!-- <h1>LOBBY CODE: {{ lobbyCode }} </h1> -->
-             <!-- Login form to add user to db and verify lobby code -->
-            <div id="login-form-container">
-                <form id="login-form" method="POST">
-                    <input 
-                        name="username" 
-                        id="username" 
-                        placeholder="Username..." 
-                        maxlength="50"
-                        />
-                    <br/>
-                    <input 
-                        name="lobby-code-input" 
-                        id="lobby-code-input" 
-                        placeholder="Lobby Code..." 
-                        maxlength="5"
-                        />
-                    <br/>
-                    <button type="submit" id="submit-login">Join Lobby</button>
-                </form>
-            </div>
+        <!-- Login form to add user to db and verify lobby code -->
+        <div id="login-form-container">
+            <form id="login-form" method="POST">
+                <input 
+                    name="username" 
+                    id="username" 
+                    placeholder="Username..." 
+                    maxlength="50"
+                    required
+                    />
+                <br/>
+                <input 
+                    name="lobby-code-input" 
+                    id="lobby-code-input" 
+                    placeholder="Lobby Code..." 
+                    maxlength="5"
+                    required
+                    />
+                <br/>
+                <button type="submit" id="submit-login">Join Lobby</button>
+            </form>
         </div>
         <!-- Displays avatars not taken -->
         <div id="avatar-selection-container" hidden>
             <h1>Select Your Avatar</h1>
             <h3>Choose Wisely</h3>
         </div>
-        
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
         <script src="{{ url_for('static', filename='js/login.js') }}"></script>
     </body>
 </html>

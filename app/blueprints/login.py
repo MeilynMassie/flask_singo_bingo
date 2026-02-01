@@ -5,7 +5,7 @@ from app.services.db import (
     db_add_user, 
     db_get_avatars, 
     db_add_user_avatar,
-    db_create_lobby
+    db_get_all_active_lobbies
 )
 
 login_bp = Blueprint('login', __name__)
@@ -42,9 +42,10 @@ def get_avatar_images():
     avatar_list = [{'id': avatar[0], 'filePath': 'static/imgs/avatars/'+avatar[1]} for avatar in avatars]
     return jsonify(avatar_list)
 
-# def getStaticImagesPath(filename):
-#     # Get base directory of the project
-#     baseDir = Path(__file__).resolve().parent.parent.parent
-#     staticDir = baseDir / 'app' / 'static' / 'imgs' / 'avatars'
-#     path = staticDir / filename
-#     return str(path)
+# TODO FIRST: Retrieve lobby code so that it can verify in js that the lobby code that the user submitted exists
+@login_bp.route('/db/getLobbyCode')
+def get_lobby_code():
+    lobbies = db_get_all_active_lobbies()
+    listOfLobbies = [lobby[0] for lobby in lobbies]
+    print(listOfLobbies)
+    return jsonify(listOfLobbies)

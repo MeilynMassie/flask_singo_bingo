@@ -1,18 +1,33 @@
 // Verify lobby code 
-document.getElementById("login-form").addEventListener("submit", function (e) {
+document.getElementById("login-form").addEventListener("submit", async function (e) {
     e.preventDefault(); // stop default submission
     const submitLogin = document.getElementById("submit-login");
-    const lobbyCodeInput = document.getElementById('lobby-code-input').value;
+    const lobbyCodeInput = document.getElementById('lobby-code-input').value.trim().toUpperCase();
     const username = document.getElementById('username').value;
-    const lobbyCode = document.getElementById('lobby-code').value;
-    console.log(`Lobby Code Input: ${lobbyCodeInput}, Expected Lobby Code: ${lobbyCode}`);
-    console.log(`Username: ${username}`);
-    if (lobbyCode.toLowerCase() === lobbyCodeInput.toLowerCase()) {
-        addUser(username, lobbyCode);
-        submitLogin.disabled = true;
-        showAvatarSelection();
+    try {
+        // Wait for lobby codes from the server
+        const listOfLobbyCodes = await fetchLobbyCode();
+        console.log(listOfLobbyCodes)
+
+        if (listOfLobbyCodes.includes(lobbyCodeInput)) {
+            console.log("I'm feeling wheee!")
+            addUser(username, lobbyCodeInput);
+            submitLogin.disabled = true;
+            showAvatarSelection();
+        } else {
+            console.log("I'm feeling whoooo...")
+        }
+    } catch (err) {
+        console.error("Error fetching lobby codes:", err);
     }
 });
+
+
+async function fetchLobbyCode() {
+    const response = await fetch('/db/getLobbyCode');
+    const lobbies = await response.json();
+    return lobbies;
+}
 
 
 function addUser(username, lobbyCode) {
@@ -63,9 +78,9 @@ function addAvatarToUser(avatarId) {
 
 
 function showAvatarSelection() {
-    document.getElementById('join-lobby-container').hidden = true;
-    const avatarDiv = document.getElementById('avatar-selection-container')
-    avatarDiv.hidden = false;
+    const avatarDiv = document.getElementById('avatar-selection-container');
+    hideDiv('login-form-container');
+    showDiv('avatar-selection-container');
     // Fetches avatar images from server
     fetch('/db/GetAvatarImages')
         .then(response => response.json())

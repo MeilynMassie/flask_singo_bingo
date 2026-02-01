@@ -10,18 +10,18 @@ def test_page():
     return render_template('testPage.html')
 
 ## COMPUTER ROUTES ##
-# Main Menu
+# Main Menu - Starting point for computer
 @main.route('/mainMenu')
 def main_menu():
     return render_template('mainMenu.html')
 
+# Sends players to route with lobby associated with their lobby code
 @main.route('/lobby/<lobbyCode>')
 def lobby(lobbyCode):
     lobbyExists = db_get_lobby(lobbyCode)
     print(lobbyExists)
     if not lobbyExists:
         return "Lobby not found", 404
-    # return render_template('bingoCard.html') 
     return render_template('lobby.html',lobbyCode=lobbyCode)
 
 # Starts playing music
@@ -30,7 +30,7 @@ def start_game():
     return render_template("startGame.html")
 
 
-## Player Routes (Mobile) ##
+## PLAYER ROUTES (MOBILE) ##
 # Starting point for players on phones
 @main.route('/')
 @main.route('/login')
